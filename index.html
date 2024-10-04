@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Maker - Your All-in-One Mobile Solution</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="src/input.css">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .testimonial-card {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .testimonial-card:nth-child(2) {
+            animation-delay: 2s;
+        }
+        
+        .testimonial-card:nth-child(3) {
+            animation-delay: 4s;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .highlight-plan {
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 15px rgba(72, 187, 120, 0.7);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-blue-800 to-teal-600 text-white" x-data="{ mobileMenuOpen: false, showToTop: false }">
+    <!-- Sticky Header with Glassmorphism -->
+    <header class="fixed top-0 left-0 right-0 bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg z-50 transition-all duration-300 shadow-md" 
+            :class="{ 'py-2': showToTop, 'py-4': !showToTop }"
+            @scroll.window="showToTop = (window.pageYOffset > 100) ? true : false">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <img src="src/img/logo.png" alt="Website Maker Logo" class="h-8 md:h-10 transition-all duration-300" :class="{ 'scale-90': showToTop }">
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="#fitur" class="text-gray-700 hover:text-blue-600 transition duration-300">Fitur</a></li>
+                    <li><a href="#demo" class="text-gray-700 hover:text-blue-600 transition duration-300">Demo</a></li>
+                    <li><a href="#harga" class="text-gray-700 hover:text-blue-600 transition duration-300">Harga</a></li>
+                    <li><a href="#kontak" class="text-gray-700 hover:text-blue-600 transition duration-300">Kontak</a></li>
+                </ul>
+            </nav>
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-gray-700 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div x-show="mobileMenuOpen" 
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0 transform scale-90"
+    x-transition:enter-end="opacity-100 transform scale-100"
+    x-transition:leave="transition ease-in duration-300"
+    x-transition:leave-start="opacity-100 transform scale-100"
+    x-transition:leave-end="opacity-0 transform scale-90"
+    class="md:hidden fixed inset-0 bg-blue-800 bg-opacity-95 z-40 flex items-center justify-center">
+    <nav class="text-center">
+        <ul class="space-y-6">
+            <li><a @click="mobileMenuOpen = false" href="#fitur" class="text-2xl text-white hover:text-blue-200 transition duration-300">Fitur</a></li>
+            <li><a @click="mobileMenuOpen = false" href="#demo" class="text-2xl text-white hover:text-blue-200 transition duration-300">Demo</a></li>
+            <li><a @click="mobileMenuOpen = false" href="#harga" class="text-2xl text-white hover:text-blue-200 transition duration-300">Harga</a></li>
+            <li><a @click="mobileMenuOpen = false" href="#kontak" class="text-2xl text-white hover:text-blue-200 transition duration-300">Kontak</a></li>
+        </ul>
+    </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="bg-white py-24 md:py-32">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900">
+                Ciptakan Website Impian Anda
+                <span class="block mt-2 text-blue-600">
+                    Dalam Hitungan Menit
+                </span>
+            </h1>
+            
+            <p class="text-lg md:text-xl mb-12 max-w-2xl mx-auto text-gray-600">
+                Buka potensi kreatif Anda dengan Website Maker - aplikasi revolusioner yang membawa desain web profesional ke ujung jari Anda.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="#" class="inline-flex items-center justify-center bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition duration-300 shadow-lg transform hover:scale-105">
+                    <i class="fab fa-apple mr-2 text-xl"></i> App Store
+                </a>
+                <a href="#" class="inline-flex items-center justify-center bg-gray-800 text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-900 transition duration-300 shadow-lg transform hover:scale-105">
+                    <i class="fab fa-google-play mr-2 text-xl"></i> Google Play
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Features Section -->
+    <section id="fitur" class="bg-gray-100 py-24">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl md:text-5xl font-bold text-center mb-6 text-gray-800">
+                Revolusi Perjalanan <span class="text-blue-600">Desain Web</span> Anda
+            </h3>
+            <p class="text-xl text-center mb-16 max-w-3xl mx-auto text-gray-600">
+                Lepaskan kreativitas Anda dengan alat-alat canggih kami. Website Maker memberdayakan Anda untuk membuat website menakjubkan yang <span class="text-blue-600 font-semibold">memikat, menarik, dan mengkonversi</span> - semua dari genggaman tangan Anda.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="bg-white p-8 rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="text-5xl mb-6 text-blue-600">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Alat Desain Intuitif</h3>
+                    <p class="text-gray-600">Buat website yang memukau dengan antarmuka drag-and-drop kami. Tidak perlu coding - hanya kreativitas murni!</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="text-5xl mb-6 text-green-600">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Pendekatan Mobile-First</h3>
+                    <p class="text-gray-600">Buat website yang terlihat menarik di setiap perangkat. Desain responsif kami memastikan situs Anda terlihat menarik di mana pun.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="text-5xl mb-6 text-blue-600">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Kecepatan Performa Terbaru</h3>
+                    <p class="text-gray-600">Kecepatan adalah kunci. Kode kami yang dioptimalkan memastikan situs Anda memuat dalam hitungan detik, menjaga para pengunjung Anda terlibat.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-xl">
+                    <div class="text-5xl mb-6 text-pink-600">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">SEO Supercharged</h3>
+                    <p class="text-gray-600">Naik ke peringkat pencarian dengan alat SEO kami. Dapatkan ditemukan oleh audiens yang tepat, tanpa perlu keras.</p>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="text-center mt-16">
+            <a href="#" class="bg-blue-600 text-white font-bold py-4 px-10 rounded-full hover:bg-blue-700 transition duration-300 inline-flex items-center text-lg shadow-lg">
+                <i class="fas fa-magic mr-3"></i> Mulai Berkreasi Sekarang
+            </a>
+        </div>
+    </section>
+
+    <!-- Video Demo Section -->
+    <section id="demo" class="bg-gray-200 py-24">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 text-gray-800">
+                Lihat Website Maker Beraksi
+            </h2>
+            <p class="text-xl text-center mb-12 max-w-3xl mx-auto text-gray-600">
+                Saksikan betapa mudahnya membuat website menakjubkan dalam hitungan menit, langsung dari perangkat mobile Anda.
+            </p>
+            <div class="max-w-4xl mx-auto bg-white rounded-lg p-4 md:p-8 shadow-2xl overflow-hidden">
+                <div class="aspect-w-16 aspect-h-9">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/E15iQEm9KF8?si=EwNYwnsf1ePN3wQm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="mt-12 text-center">
+                <a href="#" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition duration-300 inline-flex items-center">
+                    <i class="fas fa-play-circle mr-2"></i> Mulai Uji Coba Gratis
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- User Testimonials Section -->
+    <section id="testimoni" class="bg-gray-100 py-24">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-800">
+                Suara Kesuksesan
+            </h2>
+            <p class="text-xl text-center mb-12 max-w-3xl mx-auto text-gray-600">
+                Bergabunglah dengan para kreator sukses yang telah mengubah kehadiran online mereka dengan Website Maker. Kisah sukses Anda hanya tinggal sekali klik!
+            </p>    
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg transform transition duration-300 hover:scale-105 overflow-hidden relative testimonial-card">
+                    <div class="absolute top-0 right-0 bg-blue-600 text-white py-1 px-3 rounded-bl-lg">
+                        <i class="fas fa-star mr-1"></i>5.0
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah Johnson" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold text-lg text-gray-800">Sarah Johnson</p>
+                            <p class="text-sm text-gray-600">Fashion Blogger</p>
+                        </div>
+                    </div>
+                    <p class="mb-4 italic text-gray-600">"Website Maker merevolusi kehadiran online saya. Saya berhasil membuat portofolio yang menakjubkan yang sempurna menampilkan desain-desain saya. Sangat mudah digunakan dan hasilnya profesional!"</p>
+                    <div class="flex items-center text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-lg transform transition duration-300 hover:scale-105 overflow-hidden relative testimonial-card">
+                    <div class="absolute top-0 right-0 bg-blue-600 text-white py-1 px-3 rounded-bl-lg">
+                        <i class="fas fa-star mr-1"></i>4.9
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold text-lg text-gray-800">Michael Chen</p>
+                            <p class="text-sm text-gray-600">Pendiri Startup Teknologi</p>
+                        </div>
+                    </div>
+                    <p class="mb-4 italic text-gray-600">"Sebagai pendiri non-teknis, Website Maker adalah game-changer. Saya meluncurkan website perusahaan kami dalam hitungan jam, bukan minggu. Template-nya modern dan opsi kustomisasinya luar biasa!"</p>
+                    <div class="flex items-center text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-lg transform transition duration-300 hover:scale-105 overflow-hidden relative testimonial-card">
+                    <div class="absolute top-0 right-0 bg-blue-600 text-white py-1 px-3 rounded-bl-lg">
+                        <i class="fas fa-star mr-1"></i>5.0
+                    </div>
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Emily Rodriguez" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold text-lg text-gray-800">Emily Rodriguez</p>
+                            <p class="text-sm text-gray-600">Fotografer Freelance</p>
+                        </div>
+                    </div>
+                    <p class="mb-4 italic text-gray-600">"Website Maker membantu saya membuat portofolio yang memukau yang benar-benar menangkap karya saya. Responsivitas mobilenya sempurna, dan klien saya sangat menyukai betapa mudahnya untuk dinavigasi!"</p>
+                    <div class="flex items-center text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Plans Section -->
+    <section id="harga" class="bg-gray-100 py-24">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl md:text-5xl font-bold text-center mb-6 text-gray-800">
+                Pilih Jalur <span class="text-blue-600">Kesuksesan</span> Anda
+            </h3>
+            <p class="text-xl text-center mb-12 max-w-3xl mx-auto text-gray-600">
+                Buka potensi penuh kehadiran online Anda. Pilih paket yang sesuai dengan ambisi Anda dan saksikan <span class="text-blue-600 font-semibold">impian digital Anda menjadi kenyataan</span>.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="bg-white rounded-lg p-8 flex flex-col justify-between transform hover:scale-105 transition duration-300 hover:shadow-xl relative overflow-hidden">
+                    <div>
+                        <div class="absolute top-0 right-0 bg-blue-600 text-white py-1 px-4 rounded-bl-lg font-semibold">Populer</div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Dasar</h3>
+                        <p class="text-4xl font-bold mb-6 text-gray-800">Rp99k<span class="text-lg font-normal text-gray-600">/bulan</span></p>
+                        <ul class="mb-8 space-y-2">
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-green-500 mr-2"></i> 5 Halaman</li>
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-green-500 mr-2"></i> Template Dasar</li>
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-green-500 mr-2"></i> Dukungan 24/7</li>
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-green-500 mr-2"></i> Responsif Mobile</li>
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-green-500 mr-2"></i> SEO Dasar</li>
+                        </ul>
+                    </div>
+                    <button class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-full hover:bg-blue-700 transition duration-300">Mulai Perjalanan Anda</button>
+                </div>
+                
+                <!-- Pro Plan (dengan highlight) -->
+                <div class="bg-white rounded-lg p-8 flex flex-col justify-between transform hover:scale-105 transition duration-300 hover:shadow-xl relative overflow-hidden highlight-plan">
+                    <div>
+                        <div class="absolute top-0 right-0 bg-green-500 text-white py-1 px-4 rounded-bl-lg font-semibold">Nilai Terbaik</div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Pro</h3>
+                        <p class="text-4xl font-bold mb-6 text-green-600">Rp199k<span class="text-lg font-normal text-gray-600">/bulan</span></p>
+                        <ul class="mb-8 space-y-2">
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-green-500 mr-2"></i> Halaman Tak Terbatas</li>
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-green-500 mr-2"></i> Template Premium</li>
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-green-500 mr-2"></i> Dukungan Prioritas</li>
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-green-500 mr-2"></i> Domain Kustom</li>
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-green-500 mr-2"></i> Fitur E-commerce</li>
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-green-500 mr-2"></i> Alat SEO Lanjutan</li>
+                        </ul>
+                    </div>
+                    <button class="w-full bg-green-500 text-white font-bold py-3 px-4 rounded-full hover:bg-green-600 transition duration-300 animate-bounce">Upgrade ke Pro</button>
+                </div>
+                
+                
+                <!-- Enterprise Plan -->
+                <div class="bg-white rounded-lg p-8 flex flex-col justify-between transform hover:scale-105 transition duration-300 hover:shadow-xl">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Enterprise</h3>
+                        <p class="text-4xl font-bold mb-6 text-gray-800">Kustom</p>
+                        <ul class="mb-8 space-y-2">
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-green-500 mr-2"></i> Semua Fitur Pro</li>
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-green-500 mr-2"></i> Manajer Akun Dedikasi</li>
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-green-500 mr-2"></i> Analitik Lanjutan</li>
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-green-500 mr-2"></i> Akses API</li>
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-green-500 mr-2"></i> Integrasi Kustom</li>
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-green-500 mr-2"></i> Keamanan Tingkat Enterprise</li>
+                        </ul>
+                    </div>
+                    <button class="w-full bg-gray-800 text-white font-bold py-3 px-4 rounded-full hover:bg-gray-900 transition duration-300">Hubungi Sales</button>
+                </div>
+            </div>
+            <div class="mt-16 text-center">
+                <p class="text-2xl font-bold mb-4 text-gray-800">Belum yakin paket mana yang tepat untuk Anda?</p>
+                <p class="text-lg mb-8 text-gray-600">Mulai dengan uji coba gratis 14 hari dan jelajahi semua fitur tanpa risiko!</p>
+                <button class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition duration-300 shadow-lg">
+                    Mulai Uji Coba Gratis Sekarang
+                </button>
+            </div>
+            <p class="text-center mt-12 text-lg text-gray-600">
+                <span class="font-bold text-blue-600">Penawaran Terbatas:</span> Daftar untuk paket tahunan dan dapatkan 2 bulan gratis!
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="bg-white py-24">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-12">
+                <!-- Left Column -->
+                <div class="md:w-1/2">
+                    <h2 class="text-sm uppercase text-blue-600 mb-2">FAQ</h2>
+                    <h3 class="text-4xl md:text-5xl font-bold mb-4 text-gray-800">
+                        Pertanyaan Yang
+                        <br>
+                        Sering <span class="text-blue-600">Ditanyakan</span>
+                    </h3>
+                    <p class="mb-8 text-gray-600">
+                        Siapa tahu salah satu pertanyaan Anda ada jawabannya di sini:
+                    </p>
+                    <button class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition duration-300 transform hover:scale-105">
+                        BERGABUNG SEKARANG
+                    </button>
+                </div>
+
+                <!-- Right Column - Accordion -->
+                <div class="md:w-1/2" x-data="{selected:null}">
+                    <div class="space-y-4">
+                        <div class="bg-gray-100 rounded-lg">
+                            <button @click="selected !== 1 ? selected = 1 : selected = null" class="flex justify-between items-center w-full p-4 focus:outline-none">
+                                <span class="font-semibold text-gray-800">Saya gaptek, Tetap bisa ikut kelasnya?</span>
+                                <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" :class="{'transform rotate-180': selected === 1}"></i>
+                            </button>
+                            <div x-show="selected === 1" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-y-90" x-transition:enter-end="opacity-100 transform scale-y-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 transform scale-y-100" x-transition:leave-end="opacity-0 transform scale-y-90" class="p-4 border-t border-gray-200 text-gray-600">
+                                Bisa banget! Semua materi di Website Maker disusun secara sederhana, supaya siapapun bisa mengikutinya. Kami menyediakan alat desain intuitif yang tidak memerlukan keahlian coding.
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-100 rounded-lg">
+                            <button @click="selected !== 2 ? selected = 2 : selected = null" class="flex justify-between items-center w-full p-4 focus:outline-none">
+                                <span class="font-semibold text-gray-800">Berapa lama saya bisa membuat website pertama saya?</span>
+                                <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" :class="{'transform rotate-180': selected === 2}"></i>
+                            </button>
+                            <div x-show="selected === 2" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-y-90" x-transition:enter-end="opacity-100 transform scale-y-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 transform scale-y-100" x-transition:leave-end="opacity-0 transform scale-y-90" class="p-4 border-t border-gray-200 text-gray-600">
+                                Dengan Website Maker, Anda bisa membuat website pertama Anda dalam hitungan jam, bukan minggu. Template-template modern kami dan opsi kustomisasi yang luar biasa memungkinkan Anda untuk meluncurkan website dengan cepat.
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-100 rounded-lg">
+                            <button @click="selected !== 3 ? selected = 3 : selected = null" class="flex justify-between items-center w-full p-4 focus:outline-none">
+                                <span class="font-semibold text-gray-800">Apakah website yang saya buat akan responsif di mobile?</span>
+                                <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" :class="{'transform rotate-180': selected === 3}"></i>
+                            </button>
+                            <div x-show="selected === 3" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-y-90" x-transition:enter-end="opacity-100 transform scale-y-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 transform scale-y-100" x-transition:leave-end="opacity-0 transform scale-y-90" class="p-4 border-t border-gray-200 text-gray-600">
+                                Ya, semua website yang dibuat dengan Website Maker sepenuhnya responsif. Kami menggunakan pendekatan mobile-first untuk memastikan website Anda terlihat sempurna di semua perangkat, dari smartphone hingga desktop.
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-100 rounded-lg">
+                            <button @click="selected !== 4 ? selected = 4 : selected = null" class="flex justify-between items-center w-full p-4 focus:outline-none">
+                                <span class="font-semibold text-gray-800">Apakah ada fitur SEO di Website Maker?</span>
+                                <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300" :class="{'transform rotate-180': selected === 4}"></i>
+                            </button>
+                            <div x-show="selected === 4" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-y-90" x-transition:enter-end="opacity-100 transform scale-y-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 transform scale-y-100" x-transition:leave-end="opacity-0 transform scale-y-90" class="p-4 border-t border-gray-200 text-gray-600">
+                                Tentu! Website Maker dilengkapi dengan alat SEO yang kuat. Paket Dasar kami menyediakan fitur SEO dasar, sementara paket Pro menawarkan alat SEO lanjutan untuk membantu website Anda mendapatkan peringkat lebih tinggi di mesin pencari.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact/Support Section -->
+    <section id="kontak" class="bg-gray-100 py-24">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+                Kami Siap <span class="text-blue-600">Membantu Anda</span> Sukses
+            </h3>
+            <p class="text-xl text-center mb-12 max-w-3xl mx-auto text-gray-600">
+                Jangan ragu untuk menghubungi kami. Tim support kami siap <span class="text-blue-600 font-semibold">24/7</span> untuk membantu Anda mencapai kesuksesan online.
+            </p>
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
+                <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block mb-2 text-gray-700">Nama</label>
+                        <input type="text" id="name" name="name" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-2 text-gray-700">Email</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600" required>
+                    </div>
+                    <div>
+                        <label for="phone" class="block mb-2 text-gray-700">Telepon (opsional)</label>
+                        <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                    </div>
+                    <div>
+                        <label for="subject" class="block mb-2 text-gray-700">Subjek</label>
+                        <select id="subject" name="subject" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-gray-700" required>
+                            <option value="">Pilih subjek</option>
+                            <option value="support">Dukungan Teknis</option>
+                            <option value="billing">Pertanyaan Pembayaran</option>
+                            <option value="feature">Permintaan Fitur</option>
+                            <option value="other">Lainnya</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="message" class="block mb-2 text-gray-700">Pesan</label>
+                        <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600" required></textarea>
+                    </div>
+                    <div class="md:col-span-2">
+                        <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition duration-300">Kirim Pesan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Website Maker</h3>
+                    <p class="mb-4">Buat website menakjubkan di mana saja dengan aplikasi mobile kami.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110">
+                            <div class="bg-gray-700 hover:bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center">
+                                <i class="fab fa-facebook-f text-lg"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110">
+                            <div class="bg-gray-700 hover:bg-blue-400 w-10 h-10 rounded-full flex items-center justify-center">
+                                <i class="fab fa-twitter text-lg"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110">
+                            <div class="bg-gray-700 hover:bg-pink-600 w-10 h-10 rounded-full flex items-center justify-center">
+                                <i class="fab fa-instagram text-lg"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110">
+                            <div class="bg-gray-700 hover:bg-blue-700 w-10 h-10 rounded-full flex items-center justify-center">
+                                <i class="fab fa-linkedin-in text-lg"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Tautan Cepat</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#fitur" class="text-gray-400 hover:text-white transition duration-300">Fitur</a></li>
+                        <li><a href="#demo" class="text-gray-400 hover:text-white transition duration-300">Demo</a></li>
+                        <li><a href="#harga" class="text-gray-400 hover:text-white transition duration-300">Harga</a></li>
+                        <li><a href="#kontak" class="text-gray-400 hover:text-white transition duration-300">Kontak</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-white transition duration-300">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Sumber Daya</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Panduan Pengguna</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Komunitas</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Afiliasi</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Hubungi Kami</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-blue-400"></i>
+                            <span>Jl. Web No. 123, Kota Digital, 12345</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2 text-blue-400"></i>
+                            <a href="tel:+6281234567890" class="text-gray-400 hover:text-white transition duration-300">+62 812-3456-7890</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-blue-400"></i>
+                            <a href="mailto:info@websitemaker.id" class="text-gray-400 hover:text-white transition duration-300">info@websitemaker.id</a>
+                        </li>
+                    </ul>
+                    <div class="mt-4">
+                        <h4 class="text-lg font-semibold mb-2">Jam Operasional</h4>
+                        <p class="text-gray-400">Senin - Jumat: 09.00 - 17.00 WIB</p>
+                        <p class="text-gray-400">Sabtu: 09.00 - 15.00 WIB</p>
+                    </div>
+                    <div class="mt-4">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6664463317476!2d106.82495931476882!3d-6.17540389551853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5d2e764b12d%3A0x3d2ad6e1e0e9bcc8!2sMonumen%20Nasional!5e0!3m2!1sid!2sid!4v1650123456789!5m2!1sid!2sid" width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-lg"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center">
+                <p class="text-gray-400">&copy; 2024 Website Maker. Semua Hak Dilindungi.</p>
+                <p class="mt-2 text-sm text-gray-500">Dibuat dengan <span class="text-red-500">&hearts;</span> di Indonesia | Memberdayakan Kreativitas Digital Sejak 2020</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- To Top Button -->
+    <button 
+        @click="window.scrollTo({top: 0, behavior: 'smooth'})"
+        x-show="showToTop"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 transform translate-y-2"
+        x-transition:enter-end="opacity-100 transform translate-y-0"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100 transform translate-y-0"
+        x-transition:leave-end="opacity-0 transform translate-y-2"
+        class="fixed bottom-8 right-8 bg-white text-blue-600 p-2 rounded-full shadow-lg hover:bg-teal-100 transition-colors duration-300 focus:outline-none"
+    >
+        <i class="fas fa-chevron-up text-xl"></i>
+    </button>
+
+    <script src="src/app.js"></script>
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
